@@ -289,8 +289,8 @@ export class StorageLayer {
   }
 
   /**
-   * Last step in uploading a file. Validates the request and persists the staging
-   * object to its permanent location on disk.
+   * Last step in uploading a file. Validates the request, persists the staging
+   * object to its permanent location on disk, updates metadata.
    * TODO(tonyjhuang): Inject a Rules evaluator into StorageLayer to avoid needing skipAuth param
    * @throws {ForbiddenError} if the request is not authorized.
    */
@@ -314,6 +314,8 @@ export class StorageLayer {
       this._cloudFunctions,
       this._persistence.readBytes(upload.path, upload.size)
     );
+    metadata.update(upload.metadata);
+
     const authorized =
       skipAuth ||
       (await this._rulesValidator.validate(
