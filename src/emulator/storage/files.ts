@@ -315,6 +315,8 @@ export class StorageLayer {
       this._persistence.readBytes(upload.path, upload.size)
     );
     metadata.update(upload.metadata);
+    console.log("dog");
+    console.log(metadata);
 
     const authorized =
       skipAuth ||
