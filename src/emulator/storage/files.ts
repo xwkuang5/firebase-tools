@@ -314,7 +314,7 @@ export class StorageLayer {
       this._cloudFunctions,
       this._persistence.readBytes(upload.path, upload.size)
     );
-    metadata.update(upload.metadata);
+    metadata.update(upload.metadata, /* shouldTrigger = */ false);
 
     const authorized =
       skipAuth ||
