@@ -1143,6 +1143,9 @@ describe("Storage emulator", () => {
     });
   });
 
+  /**
+   * TODO(abhisun): Add test coverage to validate how many times various cloud functions are triggered.
+   */
   describe("Firebase Endpoints", () => {
     let storage: Storage;
 
